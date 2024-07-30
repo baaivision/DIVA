@@ -1,6 +1,6 @@
 <div align='center'>
 
-<h2><a href="https://arxiv.org/abs/2310.06773">Diffusion Feedback Helps CLIP See Better</a></h2>
+<h2><a href="https://arxiv.org/abs/2407.20171">Diffusion Feedback Helps CLIP See Better</a></h2>
 
 [Wenxuan Wang](https://scholar.google.com/citations?user=75OyC-oAAAAJ&hl=zh-CN)<sup>1,2,3*</sup>, [Quan Sun](https://scholar.google.cz/citations?user=pVKiHdEAAAAJ&hl=zh-CN&oi=ao)<sup>3*</sup>, [Fan Zhang](https://scholar.google.cz/citations?hl=zh-CN&user=VsJ39HMAAAAJ&view_op=list_works&sortby=pubdate)<sup>3</sup>, [Yepeng Tang](https://scholar.google.cz/citations?user=CAC_4OUAAAAJ&hl=zh-CN&oi=ao)<sup>4</sup>, [Jing Liu](https://scholar.google.com/citations?user=sOI-S7oAAAAJ&hl=zh-CN)<sup>1,2</sup>, [Xinlong Wang](https://scholar.google.com/citations?hl=zh-CN&user=DPz0DjYAAAAJ&view_op=list_works&sortby=pubdate/)<sup>3</sup>
  
@@ -14,7 +14,7 @@
 
 [Coming Soon] We release [training & evaluation code](https://github.com/baaivision/DIVA) ! 💥   
 [Coming Soon] We release [CLIP model weights](https://github.com/baaivision/DIVA) ! 💥  
-[2024-07-31] Our [paper](https://arxiv.org/abs/2406.11832) is released on arXiv ! 💥
+[2024-07-30] Our [paper](https://arxiv.org/abs/2407.20171) is released on arXiv ! 💥
 
 
 ## 💡 Motivation
