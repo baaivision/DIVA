@@ -12,8 +12,8 @@
 
 ## ⏰ Schedule
 
-[Coming Soon] We release [training & evaluation code](https://github.com/baaivision/DIVA) ! 💥   
 [Coming Soon] We release [CLIP model weights](https://github.com/baaivision/DIVA) ! 💥  
+[2024-08-05] We release [training & evaluation code](https://github.com/baaivision/DIVA) ! 💥  
 [2024-07-30] Our [paper](https://arxiv.org/abs/2407.20171) is released on arXiv ! 💥
 
 
@@ -41,11 +41,11 @@ Clone this repository and install the required packages:
 ```shell
 git clone https://github.com/baaivision/DIVA.git
 cd DIVA
+mkdir -p outputs logs datasets pretrained_weights/CLIP pretrained_weights/SD
 
 conda create -n diva python=3.9
 conda activate diva
 pip install -r requirements.txt
-
 ```
 Core packages: 
 - [Pytorch](https://pytorch.org/) version 2.0.0
@@ -53,7 +53,42 @@ Core packages:
 - [timm](https://github.com/rwightman/pytorch-image-models) version 0.9.8
 
 
-## 🎞 Visualization
+## 🍹 Preparation for DIVA's Generative Fine-tuning
+
+### Data Acquisition
+For data preparation, please refer to [image2dataset](https://github.com/rom1504/img2dataset/blob/main/dataset_examples/cc3m.md) and [MMVP](https://github.com/tsb0601/MMVP/tree/main) for the employed training and evaluation data in this work. After collecting the corresponding datasets, directly put them into the `dataset/` folder path. 
+
+### Pre-trained Weight Downloading
+As for pre-trained weight preparation, please refer to [OpenAI ViT-L-14/224&336](https://github.com/openai/CLIP/blob/main/clip/clip.py), [MetaCLIP ViT-L/H-14](https://github.com/facebookresearch/metaclip), [SigLIP ViT-SO-14/224](https://huggingface.co/timm/ViT-SO400M-14-SigLIP), [SigLIP ViT-SO-14/384](https://huggingface.co/timm/ViT-SO400M-14-SigLIP-384), [DFN ViT-H-14/224](https://huggingface.co/apple/DFN5B-CLIP-ViT-H-14), [DFN ViT-H-14/378](https://huggingface.co/apple/DFN5B-CLIP-ViT-H-14-378) and [SD-2-1-base](https://huggingface.co/stabilityai/stable-diffusion-2-1-base) to acquire the model weights for discriminative CLIP models and the leveraged diffusion model that provides generative feedback. After downloading all these necessary weights, move them respectively to the corresponding folder path `pretrained_weights/CLIP/` and `pretrained_weights/SD/`.
+
+### Code Modification
+For the preparation for our DIVA's condition design, some source code in the installed [CLIP](https://github.com/openai/CLIP) and [OpenCLIP](https://github.com/mlfoundations/open_clip) packages need to be modified.
+
+For OpenAI CLIP, use the content in our provided `condition/OpenAICLIP_for_clip_model.py` to replace the content in `Your Conda Installation Path/anaconda3/envs/diva/lib/python3.9/site-packages/clip/model.py`.
+
+For MetaCLIP and DFN, use the content in our provided `condition/MetaCLIP_for_openclip_transformer.py` and `condition/DFN_for_openclip_transformer.py` to replace the content in `Your Conda Installation Path/anaconda3/envs/diva/lib/python3.9/site-packages/open_clip/transformer.py`, respectively.
+
+For SigLIP, use the content in our provided `condition/SigLIP_for_timm_models_visiontransformer.py` to replace the content in `Your Conda Installation Path/anaconda3/envs/diva/lib/python3.9/site-packages/timm/models/vision_transformer.py`.
+
+
+## 🍻 Quick Start for Training & Evaluation
+
+After all the above preparation steps, you can simply start training for our DIVA with the following command: 
+```shell
+# For OpenAICLIP
+bash DIVA_for_OpenAICLIP.sh
+
+# For MetaCLIP
+bash DIVA_for_MetaCLIP.sh
+
+# For SigLIP
+bash DIVA_for_SigLIP.sh
+
+# For DFN
+bash DIVA_for_DFN.sh
+```
+
+## 🎨 Visualization
 
 <p align="center">
     <img src="assets/qualitative_mmvp.png" alt="scene" width="900" />
@@ -61,7 +96,7 @@ Core packages:
 
 
 ## 💙 Acknowledgement
-DIVA is built upon the awesome [Diffusion-TTA](https://github.com/mihirp1998/Diffusion-TTA), [MMVP](https://github.com/tsb0601/MMVP), [OpenCLIP](https://github.com/mlfoundations/open_clip), [timm](https://github.com/huggingface/pytorch-image-models/). 
+DIVA is built upon the awesome [Diffusion-TTA](https://github.com/mihirp1998/Diffusion-TTA), [MMVP](https://github.com/tsb0601/MMVP), [CLIP](https://github.com/openai/CLIP), [OpenCLIP](https://github.com/mlfoundations/open_clip), [timm](https://github.com/huggingface/pytorch-image-models/). 
 
 ## 📝 Citation
 ```bib
