@@ -125,7 +125,7 @@ sympy==1.12
 tensorboard==2.16.2
 tensorboard-data-server==0.7.2
 threadpoolctl==3.3.0
-timm==0.6.11
+timm==0.9.8
 tokenizers==0.15.2
 tomli==2.0.1
 torch==2.0.0
