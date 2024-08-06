@@ -250,9 +250,7 @@ def benchmark_model(model, benchmark_dir, device = "cpu", config=None):
                 # image_features = model.encode_image(imgs)
 
                 # ours
-                global_image_features = model.encode_image(imgs)[:,0,:]
-                local_image_features = model.encode_image(imgs)[:,1:,:].mean(dim=1)
-                image_features = global_image_features + local_image_features
+                image_features = model.encode_image(imgs)[:,0,:]
                 
                 text1_features = model.encode_text(text1)
                 text2_features = model.encode_text(text2)
