@@ -12,9 +12,9 @@
 
 ## ⏰ Schedule
 
-[Coming Soon] We release [CLIP model weights](https://github.com/baaivision/DIVA) ! 💥  
-[2024-08-05] We release [training & evaluation code](https://github.com/baaivision/DIVA) ! 💥  
-[2024-07-30] Our [paper](https://arxiv.org/abs/2407.20171) is released on arXiv ! 💥
+### [2024-08-07] We release [CLIP model weights](https://github.com/baaivision/DIVA) ! 💥  
+### [2024-08-05] We release [training & evaluation code](https://github.com/baaivision/DIVA) ! 💥  
+### [2024-07-30] Our [paper](https://arxiv.org/abs/2407.20171) is released on arXiv ! 💥
 
 
 ## 💡 Motivation
@@ -87,6 +87,22 @@ bash DIVA_for_SigLIP.sh
 # For DFN
 bash DIVA_for_DFN.sh
 ```
+
+##  Model Zoo
+
+| Method               | Image Size | Params (M) | Average Score |
+|----------------------|------------|------------|---------------|
+| [OpenAI ViT-L-14](https://huggingface.co/BAAI/DIVA/blob/main/OpenAICLIP/OpenAI-ViT-L-14-224.pth)      | 224²       | 427.6      | 25.9 (+6.6)   |
+| [OpenAI ViT-L-14](https://huggingface.co/BAAI/DIVA/blob/main/OpenAICLIP/OpenAI-ViT-L-14-336.pth)      | 336²       | 427.9      | 25.2 (+5.2)   |
+| [MetaCLIP ViT-L-14](https://huggingface.co/BAAI/DIVA/blob/main/MetaCLIP/MetaCLIP-ViT-L-14.pth)    | 224²       | 427.6      | 27.4 (+3.7)   |
+| [MetaCLIP ViT-H-14](https://huggingface.co/BAAI/DIVA/blob/main/MetaCLIP/MetaCLIP-ViT-H-14.pth)    | 224²       | 986.1      | 31.9 (+6.7)   |
+| [SigLIP ViT-SO-14](https://huggingface.co/BAAI/DIVA/blob/main/SigLIP/SigLIP-ViT-SO-14-224.pth)     | 224²       | 877.4      | 40.7 (+2.9)   |
+| [SigLIP ViT-SO-14](https://huggingface.co/BAAI/DIVA/blob/main/SigLIP/SigLIP-ViT-SO-14-384.pth)     | 384²       | 878.0      | 38.5 (+1.5)   |
+| [DFN ViT-H-14](https://huggingface.co/BAAI/DIVA/blob/main/DFN/DFN-ViT-H-14-224.pth)        | 224²       | 986.1      | 43.7 (+4.4)   |
+| [DFN ViT-H-14](https://huggingface.co/BAAI/DIVA/blob/main/DFN/DFN-ViT-H-14-378.pth)         | 378²       | 986.7      | 37.8 (+3.0)   |
+
+
+It is worth noting that, due to the randomness among the introduced condition design during the training phase and the selection of local patch tokens during the inference phase for OpenAI CLIP, the obtained scores on MMVP_VLM benchmark using our provided OpenAI CLIP weights might not be the same as the reported results in our paper. At this time, we recommend trying different random seeds multiple times if the scores do not meet expectations. 
 
 ## 🎨 Visualization
 
