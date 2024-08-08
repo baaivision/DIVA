@@ -12,7 +12,7 @@
 
 ## ⏰ Schedule
 
-### [2024-08-07] We release [CLIP model weights](https://github.com/baaivision/DIVA) ! 💥  
+### [2024-08-07] We release [CLIP model weights](https://huggingface.co/BAAI/DIVA) ! 💥  
 ### [2024-08-05] We release [training & evaluation code](https://github.com/baaivision/DIVA) ! 💥  
 ### [2024-07-30] Our [paper](https://arxiv.org/abs/2407.20171) is released on arXiv ! 💥
 
