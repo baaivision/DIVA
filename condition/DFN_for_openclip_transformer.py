@@ -551,31 +551,31 @@ class VisionTransformer(nn.Module):
             x = self.ln_post(x)
             pooled, tokens = self._global_pool(x)
             pooled = pooled.unsqueeze(1)
-            num_selected_ratio = 0.5
-            num_selected = int(num_selected_ratio*tokens.shape[1])
-            random_indices = torch.randint(0, tokens.shape[1], (x.shape[0], num_selected))
-            batch_indices = torch.arange(x.shape[0]).unsqueeze(1).expand(x.shape[0], num_selected)
-            selected_tokens = tokens[batch_indices, random_indices]
-            merge_tokens = torch.cat((pooled, selected_tokens), dim=1)
+            merge_tokens = torch.cat((pooled, tokens), dim=1)
             B,N,C = merge_tokens.shape
             merge_tokens = merge_tokens.reshape(B*N,C)
             if self.proj is not None:
                 merge_tokens = merge_tokens @ self.proj
                 merge_tokens = merge_tokens.reshape(B,N,self.output_dim)
-            return merge_tokens
-        
+            return merge_tokens  
+
         
             # DIVA's condition for DFN ViT-H-14/378
             # x = self.ln_post(x)
             # pooled, tokens = self._global_pool(x)
             # pooled = pooled.unsqueeze(1)
-            # merge_tokens = torch.cat((pooled, tokens), dim=1)
+            # num_selected_ratio = 0.5
+            # num_selected = int(num_selected_ratio*tokens.shape[1])
+            # random_indices = torch.randint(0, tokens.shape[1], (x.shape[0], num_selected))
+            # batch_indices = torch.arange(x.shape[0]).unsqueeze(1).expand(x.shape[0], num_selected)
+            # selected_tokens = tokens[batch_indices, random_indices]
+            # merge_tokens = torch.cat((pooled, selected_tokens), dim=1)
             # B,N,C = merge_tokens.shape
             # merge_tokens = merge_tokens.reshape(B*N,C)
             # if self.proj is not None:
             #     merge_tokens = merge_tokens @ self.proj
             #     merge_tokens = merge_tokens.reshape(B,N,self.output_dim)
-            # return merge_tokens  
+            # return merge_tokens
         
 
 def text_global_pool(x, text: Optional[torch.Tensor] = None, pool_type: str = 'argmax'):
